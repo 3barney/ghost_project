@@ -7,6 +7,11 @@
         <variable
             name="data"
             type="com.jomo.gohst.data.model.Tag" />
+
+        <variable
+            name="handler"
+            type="com.jomo.gohst.ui.handlers.TagHandler" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -15,6 +20,7 @@
         app:cardBackgroundColor="@color/badge_background_color"
         app:cardCornerRadius="4dp"
         app:contentPadding="8dp"
+        android:onClick="@{() -> handler.onTagItemClicked()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -34,7 +40,6 @@
             android:layout_height="match_parent"/>
 
 
-        <!--app:htmlText="@{data.categoryName}"-->
     </androidx.cardview.widget.CardView>
 
 </layout>

@@ -21,4 +21,12 @@ class GhostRepository @Inject constructor(
                 Log.e("REPOSITORY DB *** ", it.size.toString())
             }
     }
+
+    fun findByName(name: String): Observable<List<Ghost>> {
+        return ghostDao.findByName(name)
+            .toObservable()
+            .doOnNext {
+                Log.e("REPOSITORY DB FIND*** ", it.size.toString())
+            }
+    }
 }

@@ -17,5 +17,7 @@ interface GhostDao {
     fun insertGhost(ghost: Ghost)
 
     // TODO: Select by tag or by night
+    @Query("SELECT * from ghost WHERE tag LIKE :name")
+    fun findByName(name: String): Single<List<Ghost>>
 
 }
