@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="error" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorAccent</item> <!--apply the color you wat here -->
+        <item name="android:textSize">12dp</item>
+    </style>
+
 </resources>

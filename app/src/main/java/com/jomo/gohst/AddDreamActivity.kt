@@ -24,7 +24,7 @@ class AddDreamActivity : AppCompatActivity() {
     lateinit var tagLine: TextInputLayout
     lateinit var description: TextInputLayout
 
-    lateinit var t: Toast
+    lateinit var toast: Toast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +43,23 @@ class AddDreamActivity : AppCompatActivity() {
         var tagValue = tagLine.editText!!.text.toString()
         var descriptionValue = description.editText!!.text.toString()
 
-        if (tagValue != null && descriptionValue != null) {
-            val ghost: Ghost = Ghost(tag = tagValue, description = descriptionValue, Night = Date())
-            ghostViewModel.addGhost(ghost)
-
-            t = Toast.makeText(this@AddDreamActivity, "Dream Added", Toast.LENGTH_SHORT)
-            t. show()
+        if (tagValue.isEmpty()) {
+            tagLine.error = "Tag is required"
+            return
         }
+
+        if (descriptionValue.isEmpty()) {
+            description.error = "Description is required"
+            return
+        }
+
+        val ghost: Ghost = Ghost(tag = tagValue, description = descriptionValue, Night = Date())
+        ghostViewModel.addGhost(ghost)
+
+        toast = Toast.makeText(this@AddDreamActivity, "Dream Added", Toast.LENGTH_SHORT)
+        toast.show()
+
+        this.finish()
     }
 
 }
