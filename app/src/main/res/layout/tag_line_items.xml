@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    
+    <data>
+        <variable
+            name="data"
+            type="com.jomo.gohst.data.model.Tag" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:cardBackgroundColor="@color/badge_background_color"
+        app:cardCornerRadius="4dp"
+        app:contentPadding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="4dp"
+            android:paddingEnd="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            app:text="@{data.tagName}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <!--app:htmlText="@{data.categoryName}"-->
+    </androidx.cardview.widget.CardView>
+
+</layout>

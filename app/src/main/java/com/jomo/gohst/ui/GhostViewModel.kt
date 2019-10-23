@@ -24,7 +24,6 @@ class GhostViewModel @Inject constructor(
     private val ghostError: MutableLiveData<String> = MutableLiveData()
 
     lateinit var disposableObserver: DisposableObserver<List<Ghost>>
-    lateinit var disposableObserverAdd: DisposableObserver<Unit>
 
     fun ghostResult(): LiveData<List<Ghost>> { return ghostResult }
 

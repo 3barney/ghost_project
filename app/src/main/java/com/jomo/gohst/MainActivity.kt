@@ -9,10 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jomo.gohst.data.model.Ghost
+import com.jomo.gohst.data.model.Tag
 import com.jomo.gohst.ui.GhostViewModel
 import com.jomo.gohst.ui.GhostViewModelFactory
 import com.jomo.gohst.ui.adapter.DreamsAdapter
+import com.jomo.gohst.ui.adapter.TagAdapter
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_add_dream.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import javax.inject.Inject
@@ -24,6 +27,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var ghostViewModel: GhostViewModel
     var ghostItems: List<Ghost>? = null
 
+    private val tagLineItemList = listOf(
+        Tag("Flowers"),
+        Tag("Flying"),
+        Tag("Blood"),
+        Tag("Food"),
+        Tag("Walking")
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +44,11 @@ class MainActivity : AppCompatActivity() {
         ghostViewModel = ViewModelProviders.of(this, ghostViewModelFactory)
             .get(GhostViewModel::class.java)
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         ghostViewModel.loadGhosts()
         ghostViewModel.ghostResult().observe(
@@ -50,11 +66,13 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-
+        setUpTagView()
     }
 
-    fun setUpView() {
-        if (ghostItems != null) {
+    private fun setUpView() {
+        if (ghostItems != null && ghostItems!!.size > 0) {
+            missing_dreams.visibility = View.GONE
+            dreams_recycler_view.visibility = View.VISIBLE
             dreams_recycler_view.apply {
                 adapter = DreamsAdapter(
                     this@MainActivity,
@@ -62,6 +80,12 @@ class MainActivity : AppCompatActivity() {
                 )
                 adapter!!.notifyDataSetChanged()
             }
+        }
+    }
+
+    private fun setUpTagView() {
+        tag_line_items_recycler_view.apply {
+            adapter = TagAdapter(this@MainActivity, tagLineItemList)
         }
     }
 
