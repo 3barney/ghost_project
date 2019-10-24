@@ -30,11 +30,11 @@
                 android:paddingBottom="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/night"
-                android:text="@{String.valueOf(data.night)}"
+                android:text="@{`Date:  ` + String.valueOf(data.night)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/night"
                 android:paddingBottom="5dp"
@@ -42,17 +42,17 @@
                 android:id="@+id/tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{data.tag}"
+                android:text="@{`Tag:  ` + data.tag}"
                 tools:layout_editor_absoluteX="-3dp"
                 tools:layout_editor_absoluteY="34dp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/description"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{data.description}"
+                android:text="@{`Description:  ` + data.description}"
                 tools:layout_editor_absoluteX="-3dp"
                 tools:layout_editor_absoluteY="66dp" />
 
